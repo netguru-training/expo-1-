@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import styles from './EventList.styles'
+import styles from './Task.styles'
 
 const {
     containerStyle,
@@ -8,7 +8,7 @@ const {
 } = styles
 
 
-const EventList = ({
+const Task = ({
     text
 }) => {
     return (
@@ -22,4 +22,4 @@ const EventList = ({
     )
 }
 
-export default EventList
+export default Task

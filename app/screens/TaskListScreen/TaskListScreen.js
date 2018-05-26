@@ -1,18 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { View, ScrollView } from 'react-native'
 import {
     CurrentWeatherInfo,
     WeatherEventListElement
 } from '../../components'
-import { EventList } from '../../components/EventList/EventList'
-import styles from './EventListScreen.style'
+import { Task } from './Task.view'
+import styles from './HomeScreen.styles'
 
 const {
     containerStyle,
     currentWeatherContainerStyle
 } = styles
 
-class EventListScreen extends React.Component {
+class TaskListScreen extends React.Component {
 
     state = {};
     componentWillMount(props) {
@@ -22,7 +23,7 @@ class EventListScreen extends React.Component {
     buildList(data) {
         let arr = [];
         data.forEach(element => {
-            arr.push(<EventList text={element} />)
+            arr.push(<Task text={element} />)
         });
 
         return arr;
@@ -45,5 +46,13 @@ class EventListScreen extends React.Component {
     }
 }
 
+function mapStateToProps(state, ownProps) {
+    console.log(state); // state
+    // const 
 
-export default EventListScreen
+    return {
+        data:{text:'test'}
+    }
+  }
+
+export default connect(mapStateToProps)( TaskListScreen)
