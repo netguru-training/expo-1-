@@ -13,6 +13,7 @@ class HomeScreen extends React.Component {
       getWeather();
     }
 
+
     render() {
         const { navigation, data, loading, error } = this.props;
         if(loading || !data.weatherData) {
