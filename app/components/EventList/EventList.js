@@ -1,25 +1,24 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import styles from './EventList.styles'
+import React from 'react';
+import {View} from 'react-native';
 
-const {
-    containerStyle,
-    currentWeatherContainerStyle
-} = styles
+import WeatherEventListElement from '../WeatherEventListElement/WeatherEventListElement';
 
+const eventList = (props) => {
+    const weatherList = props.days.map((day, i) => {
+        <WeatherEventListElement 
+            headerInfo={day.headerInfo}
+            imageUrl={day.imageUrl}
+            footerInfo={day.footerInfo + ' *C'}
+            navigation={day.navigation}
+            id={i}
+        />
+    });
 
-const EventList = ({
-    text
-}) => {
     return (
-        <View
-            style={containerStyle}
-        >
-            <Text >
-                {text}
-            </Text>
+        <View>
+            {weatherList}
         </View>
     )
-}
+};
 
-export default EventList
+export default eventList;
