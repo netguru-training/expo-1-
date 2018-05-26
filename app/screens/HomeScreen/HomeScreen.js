@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { CurrentWeatherInfo, WeatherEventListElement, Header } from '../../components';
+import {
+    CurrentWeatherInfo,
+    WeatherEventListElement,
+    Header,
+    DegreeRenderer
+} from '../../components';
 import { getWeather } from '../../redux/apiData/actions';
 import styles from './HomeScreen.styles';
 
@@ -28,14 +33,14 @@ class HomeScreen extends React.Component {
                     <CurrentWeatherInfo
                         headerInfo="Monday"
                         imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
-                        footerInfo="25 *C"
+                        footerInfo="25 &#8451;"
                     />
                 </View>
                 <View style={containerStyle}>
                     <WeatherEventListElement
                         headerInfo="Tuesday"
                         imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
-                        footerInfo="25 *C"
+                        footerInfo="25 &#8451;"
                         navigation={navigation}
                     />
                 </View>
