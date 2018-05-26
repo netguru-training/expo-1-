@@ -1,25 +1,35 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import styles from './EventList.styles'
 
 const {
-    containerStyle,
-    currentWeatherContainerStyle
+  containerStyle,
+  currentWeatherContainerStyle
 } = styles
 
 
 const EventList = ({
-    text
+  text,
+  description,
+  removeCb
 }) => {
-    return (
-        <View
-            style={containerStyle}
-        >
-            <Text >
-                {text}
-            </Text>
-        </View>
-    )
+  return (
+    <View
+      style={containerStyle}
+    >
+      <Text >
+        {text}
+        {description}
+      </Text>
+      <TouchableOpacity onPress={removeCb}>
+      <Text> {`button`} </Text>
+        {/* <Image
+          style={styles.button}
+          source={require('./myButton.png')}
+        /> */}
+      </TouchableOpacity>
+    </View>
+  )
 }
 
 export default EventList
