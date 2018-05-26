@@ -1,8 +1,8 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import PropTypes from 'prop-types'
-import CurrentWeatherInfo from '../CurrentWeatherInfo/CurrentWeatherInfo'
-import styles from './WeatherEventListElement.styles'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import CurrentWeatherInfo from '../CurrentWeatherInfo/CurrentWeatherInfo';
+import styles from './WeatherEventListElement.styles';
 
 const {
   containerStyle,
@@ -10,23 +10,25 @@ const {
   currentEventsNumberStyle,
   addEventContainerStyle,
   plusStyle
-} = styles
+} = styles;
 
 const WeatherEventListElement = ({
   headerInfo,
   imageUrl,
   footerInfo,
-  eventsNumber
+  eventsNumber,
+  navigation
 }) => {
-  const eventsNumberInfo = eventsNumber > 0 ?
-    `You Have ${eventsNumber} events today` : 'You have no events today'
+  const eventsNumberInfo =
+    eventsNumber > 0
+      ? `You Have ${eventsNumber} events today`
+      : 'You have no events today';
 
   return (
-    <View
-      style={containerStyle}
-    >
+    <View style={containerStyle}>
       <TouchableOpacity
         style={currentWeatherEventContainerStyle}
+        onPress={() => navigation.navigate('EventList')}
       >
         <CurrentWeatherInfo
           headerInfo={headerInfo}
@@ -34,36 +36,29 @@ const WeatherEventListElement = ({
           footerInfo={footerInfo}
           rowDirection
         />
-        <Text
-          style={currentEventsNumberStyle}
-        >
-          {eventsNumberInfo}
-        </Text>
+        <Text style={currentEventsNumberStyle}>{eventsNumberInfo}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={addEventContainerStyle}
+        onPress={() => navigation.navigate('EventForm')}
       >
-        <Text
-          style={plusStyle}
-        >
-          +
-        </Text>
+        <Text style={plusStyle}>+</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 WeatherEventListElement.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   eventsNumber: PropTypes.number,
   headerInfo: PropTypes.string,
   footerInfo: PropTypes.string
-}
+};
 
 WeatherEventListElement.defaultProps = {
   eventsNumber: 0,
   headerInfo: '',
   footerInfo: ''
-}
+};
 
-export default WeatherEventListElement
+export default WeatherEventListElement;
