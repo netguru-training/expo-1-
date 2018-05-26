@@ -15,4 +15,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#keys for apis
+api_config.json
 /package-lock.json
