@@ -4,9 +4,9 @@ import {
     GET_WEATHER_SUCCESS,
     GET_WEATHER_FAIL
 } from '../types';
-import apiKeys from '../../../api_config';
+//import apiKeys from '../../../api_config';
 
-const WEATHER_KEY = apiKeys.weatherKey;
+const WEATHER_KEY = ''//apiKeys.weatherKey;
 
 
 export const getWeatherRequest = () => {
