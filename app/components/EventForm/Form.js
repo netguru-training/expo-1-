@@ -1,6 +1,8 @@
 import  * as React from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Button} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import {connect} from 'react-redux';
+import {addEvent} from '../../redux/events/actions'
 
 
 class EventForm extends React.Component {
@@ -16,10 +18,19 @@ class EventForm extends React.Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        console.log('A date has been picked: ', date);
+        this.setState({time: date})
         this._hideDateTimePicker();
     };
 
+    saveEventsData = () => {
+       const eventsData = {
+           name: this.state.name,
+           time: this.state.time,
+           description: this.state.description
+       }
+
+       this.props.addEvent(eventsData)
+    }
 
     render() {
         console.log('state', this.state.name, this.state.description, this.state.time)
@@ -40,9 +51,15 @@ class EventForm extends React.Component {
                 </View>
                 <Text>Description</Text>
                 <TextInput onChangeText={(description) => this.setState({description: description})}/>
+                <Button title="Save" onPress={this.saveEventsData}/>
             </View>
         )
     }
 }
 
-export default EventForm;
+
+const mapStateToProps = ({events}) => ({
+    events
+});
+
+export default connect(mapStateToProps, {addEvent})(EventForm);
