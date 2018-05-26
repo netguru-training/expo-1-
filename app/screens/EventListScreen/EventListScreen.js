@@ -57,9 +57,10 @@ class EventListScreen extends React.Component {
 function mapStateToProps(state, ownProps) {
 
 
-  console.log(`mapStateToProps state ${JSON.stringify(state)}`)
+  console.log(`mapStateToProps state ${JSON.stringify(state)} `)
+  console.log(`ownprops ${JSON.stringify(ownProps)}`)
   return {
-    data: state.apiData.days[ownProps.id].events
+    data: state.apiData.days[ownProps.navigation.state.params.id].events
   }
 }
 
