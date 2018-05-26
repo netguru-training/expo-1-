@@ -33,9 +33,7 @@ class EventForm extends React.Component {
     }
 
     render() {
-        console.log('name', this.state.name);
-        console.log('time', this.state.time);
-        console.log('description', this.state.description);
+        console.log('state', this.state.name, this.state.description, this.state.time)
         return (
             <View>
                 <Text>Name</Text>
@@ -58,6 +56,7 @@ class EventForm extends React.Component {
         )
     }
 }
+
 
 const mapStateToProps = ({events}) => ({
     events
