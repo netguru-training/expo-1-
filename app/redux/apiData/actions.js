@@ -29,8 +29,18 @@ export const getWeatherFail = (error) => {
   };
 };
 
-
-function getWeather(cityName) {
-    const reqParams = `?city${cityName}&key${WEATHER_KEY}`;
-    const apiUrl = 'https://api.weatherbit.io/v2.0/forecast/daily';
+export function getWeather() {
+    return (dispatch) => {
+        const apiUrl = 'https://api.weatherbit.io/v2.0/forecast/daily';
+        dispatch(getWeatherRequest());
+        navigator.geolocation.getCurrentPosition((loc) => {
+            const { latitude, longitude } = loc.coords;
+            const reqParams = `lat=${latitude}&lon=${longitude}&key=${WEATHER_KEY}`;
+            axios.get(`${apiUrl}?${reqParams}`).then((res) => {
+                dispatch(getWeatherSuccess(res));
+            }).catch((err) => {
+                dispatch(getWeatherFail(err));
+            });
+        });
+    }
 }
