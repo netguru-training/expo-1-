@@ -4,10 +4,21 @@ import {
   GET_WEATHER_FAIL
 } from '../types';
 
+const fakeDay = {
+  events: [
+    { text: 'text', description: 'description' }
+  ]
+}
+
+const fakeDays = [
+  fakeDay
+]
+
 const initialState = {
   loading: false,
   error: {},
-  data: {}
+  data: {},
+  days: fakeDays
 }
 
 function apiData(state = initialState, action) {

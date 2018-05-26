@@ -1,5 +1,6 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+#local
 # expo
 .expo/
 
@@ -20,3 +21,5 @@ yarn-error.log*
 #keys for apis
 api_config.json
 /package-lock.json
+
+.idea

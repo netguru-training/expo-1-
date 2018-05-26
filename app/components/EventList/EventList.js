@@ -1,24 +1,35 @@
-import React from 'react';
-import {View} from 'react-native';
+import React from 'react'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
+import styles from './EventList.styles'
 
-import WeatherEventListElement from '../WeatherEventListElement/WeatherEventListElement';
+const {
+  containerStyle,
+  currentWeatherContainerStyle
+} = styles
 
-const eventList = (props) => {
-    const weatherList = props.days.map((day, i) => {
-        <WeatherEventListElement 
-            headerInfo={day.headerInfo}
-            imageUrl={day.imageUrl}
-            footerInfo={day.footerInfo + ' *C'}
-            navigation={day.navigation}
-            id={i}
-        />
-    });
 
-    return (
-        <View>
-            {weatherList}
-        </View>
-    )
-};
+const EventList = ({
+  text,
+  description,
+  removeCb
+}) => {
+  return (
+    <View
+      style={containerStyle}
+    >
+      <Text >
+        {text}
+        {description}
+      </Text>
+      <TouchableOpacity onPress={removeCb}>
+      <Text> {`button`} </Text>
+        {/* <Image
+          style={styles.button}
+          source={require('./myButton.png')}
+        /> */}
+      </TouchableOpacity>
+    </View>
+  )
+}
 
-export default eventList;
+export default EventList
