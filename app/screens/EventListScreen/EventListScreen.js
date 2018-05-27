@@ -1,12 +1,13 @@
 import React from 'react'
-import { View, ScrollView, Text} from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 import {
   CurrentWeatherInfo,
   WeatherEventListElement
 } from '../../components'
-import EventList  from '../../components/EventList/EventList'
+import EventList from '../../components/EventList/EventList'
 import styles from './EventListScreen.style'
 
 const {
@@ -18,7 +19,7 @@ class EventListScreen extends React.Component {
 
   state = {};
   componentWillMount(props) {
-    
+
     this.setState()
   }
 
@@ -30,12 +31,12 @@ class EventListScreen extends React.Component {
     console.log(data)
 
 
-    const remove = (i)=>{
+    const remove = (i) => {
       console.log(`remove ${i}`)
     }
 
     return data.map((val, index) =>
-      <EventList key={index} text={val.text} description={val.description}  />)
+      <EventList key={index} text={val.text} description={val.description} />)
 
     // return arr;
   }
@@ -43,11 +44,15 @@ class EventListScreen extends React.Component {
   render() {
 
     return (
-      <View>
-        <Text > {`from weather data`} </Text>
+      <View style={containerStyle}>
+             <CurrentWeatherInfo
+                        headerInfo="Monday"
+                        imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
+                        footerInfo="25 *C"
+                    />
         <ScrollView>
           {
-            this.buildList(this.props.data)
+            this.buildList(this.props.events)
           }
         </ScrollView>
 
@@ -55,13 +60,22 @@ class EventListScreen extends React.Component {
     )
   }
 }
+
+// EventListScreen.propTypes = {
+//   events: PropTypes.array,
+//   weather: PropTypes.object,
+// }
+
+// EventListScreen.defaultProps = {
+
+// }
+
 function mapStateToProps(state, ownProps) {
 
-
-  console.log(`mapStateToProps state ${JSON.stringify(state)} `)
-  console.log(`ownprops ${JSON.stringify(ownProps)}`)
   return {
-    data: state.apiData.days[ownProps.navigation.state.params.id].events
+    // data: state.apiData.days[ownProps.navigation.state.params.id].events
+    events: state.apiData.days[ownProps.navigation.state.params.id].events || [],
+
   }
 }
 

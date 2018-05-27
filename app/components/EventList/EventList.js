@@ -30,7 +30,6 @@ class EventList extends React.Component {
             <Text >
               {text}
             </Text>
-
           </TouchableOpacity>
 
           <View style={eventTopRightPart}>

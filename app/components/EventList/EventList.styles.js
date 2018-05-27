@@ -4,7 +4,9 @@ const styles = {
       paddingHorizontal: 6
     },
     eventTopPart:{
-      flexDirection: 'row'
+      height: 65,
+      flexDirection: 'row',
+      alignItems: 'center'
     },
     eventTopLeftPart:{
       flex: 0.5
