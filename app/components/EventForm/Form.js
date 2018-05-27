@@ -10,7 +10,7 @@ class EventForm extends React.Component {
         name: '',
         time: '',
         description: '',
-        date: '',
+        date: this.props.id,
         isDateTimePickerVisible: false
     }
 
@@ -19,11 +19,9 @@ class EventForm extends React.Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        const dateFormatted = date.toLocaleDateString();
         const hours = date.getHours();
         const minutes = date.getMinutes();
         const time = `${hours}:${minutes}`;
-        this.setState({date: dateFormatted});
         this.setState({time});
         this._hideDateTimePicker();
     };
@@ -37,17 +35,17 @@ class EventForm extends React.Component {
        }
 
        this.props.addEvent(eventsData);
-       console.log('state', this.state)
-       // this.setState({name: '', time: '', description: ''})
+
         this.setState({
             name: "",
             time: "",
             description: "",
             date: ""
-        }, () => console.log('clear state', this.state));
+        });
     }
 
-    render() {
+    render()
+    {
         return (
             <View>
                 <Text>Name</Text>
