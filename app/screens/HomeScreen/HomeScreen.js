@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { CurrentWeatherInfo, WeatherEventListElement, Header } from '../../components';
 import { getWeather } from '../../redux/apiData/actions';
 import styles from './HomeScreen.styles';
 
-const { containerStyle, currentWeatherContainerStyle } = styles;
+const { containerStyle, currentWeatherContainerStyle, loaderStyle } = styles;
 
 class HomeScreen extends React.Component {
     componentDidMount() {
@@ -33,7 +33,12 @@ class HomeScreen extends React.Component {
         const { navigation, data: { weatherData }, loading, error } = this.props;
         if(loading || !weatherData) {
 
-            return (<View><Text>Loading</Text></View>);
+            return (
+                <View style={loaderStyle}>
+                    <ActivityIndicator size="large" color="#0000ff" />
+                    <Text>Getting your weather ;)</Text>
+                </View>
+            );
         }
 
         const { city_name, data } = weatherData.data;

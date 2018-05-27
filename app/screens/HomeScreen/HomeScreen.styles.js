@@ -6,6 +6,11 @@ const styles = {
   },
   currentWeatherContainerStyle: {
     flex: 0.5
+  },
+  loaderStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
   }
 }
 
