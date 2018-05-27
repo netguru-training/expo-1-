@@ -1,6 +1,7 @@
 const styles = {
     containerStyle: {
       flex: 1,
+      height: 20,
       paddingHorizontal: 6
     },
     eventTopPart:{
@@ -16,9 +17,12 @@ const styles = {
     },
     eventDescriptor:{
 
+    },
+    eventName: {
+        fontSize: 30,
+        fontWeight: 'bold'
     }
 
   }
-  
+
   export default styles
-  

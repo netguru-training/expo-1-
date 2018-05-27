@@ -2,7 +2,8 @@ const styles = {
   containerStyle: {
     height: 65,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderTopWidth: 1,
   },
   currentWeatherEventContainerStyle: {
     flex: 5
