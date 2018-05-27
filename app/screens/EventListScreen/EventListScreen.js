@@ -45,11 +45,11 @@ class EventListScreen extends React.Component {
 
     return (
       <View style={containerStyle}>
-             <CurrentWeatherInfo
-                        headerInfo="Monday"
-                        imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
-                        footerInfo="25 *C"
-                    />
+        <CurrentWeatherInfo
+          headerInfo="Monday"
+          imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
+          footerInfo="25 *C"
+        />
         <ScrollView>
           {
             this.buildList(this.props.events)
@@ -74,7 +74,7 @@ function mapStateToProps(state, ownProps) {
 
   return {
     // data: state.apiData.days[ownProps.navigation.state.params.id].events
-    events: state.apiData.days[ownProps.navigation.state.params.id].events || [],
+    events: state.apiData.days[ownProps.navigation.state.params.id] && state.apiData.days[ownProps.navigation.state.params.id].events || [],
 
   }
 }
