@@ -35,19 +35,19 @@ class EventForm extends React.Component {
            description: this.state.description,
            date: this.state.date
        }
-
+        console.log('event', eventsData)
        this.props.addEvent(eventsData);
 
         this.setState({
             name: "",
             time: "",
-            description: "",
-            date: ""
+            description: ""
         });
     }
 
     render()
     {
+
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Name</Text>
