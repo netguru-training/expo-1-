@@ -2,7 +2,9 @@ import  * as React from 'react';
 import {View, Text, TextInput, TouchableOpacity, Button} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {connect} from 'react-redux';
-import {addEvent} from '../../redux/events/actions'
+import {addEvent} from '../../redux/events/actions';
+import { Ionicons } from '@expo/vector-icons';
+
 
 
 class EventForm extends React.Component {
@@ -47,23 +49,24 @@ class EventForm extends React.Component {
     render()
     {
         return (
-            <View>
-                <Text>Name</Text>
-                <TextInput value={this.state.name} onChangeText={(name) => this.setState({name: name})}/>
-                <View style={{ width: 300 }}>
+            <View style={styles.container}>
+                <Text style={styles.text}>Name</Text>
+                <TextInput style={styles.input} value={this.state.name} onChangeText={(name) => this.setState({name: name})} underlineColorAndroid='transparent' />
+                <View style={{ width: 300, marginBottom: 25 }}>
                     <TouchableOpacity onPress={this._showDateTimePicker}>
-                        <Text>Show DatePicker</Text>
+                        <Text>What time is your event?</Text>
+                        <Ionicons name="md-clock" size={32} color="lightblue" />
                     </TouchableOpacity>
-                    <DateTimePicker
+                        <DateTimePicker
                         isVisible={this.state.isDateTimePickerVisible}
                         onConfirm={this._handleDatePicked}
                         onCancel={this._hideDateTimePicker}
                         mode={'time'}
                     />
                 </View>
-                <Text>Description</Text>
-                <TextInput value={this.state.description} onChangeText={(description) => this.setState({description: description})}/>
-                <Button title="Save" onPress={this.saveEventsData}/>
+                <Text style={styles.text}>Description</Text>
+                <TextInput style={styles.input} value={this.state.description} onChangeText={(description) => this.setState({description: description})} underlineColorAndroid='transparent' />
+                <View><Button title="Save" onPress={this.saveEventsData} disabled = {this.state.name === ''}/></View>
             </View>
         )
     }
@@ -73,5 +76,21 @@ class EventForm extends React.Component {
 const mapStateToProps = ({events}) => ({
     events
 });
+
+const styles = {
+    container: {
+        padding: 50
+    },
+    input: {
+        marginBottom: 20,
+        borderWidth: 2,
+        borderColor: 'lightblue',
+        backgroundColor: 'white'
+    },
+    text: {
+        fontSize: 20,
+    }
+}
+
 
 export default connect(mapStateToProps, {addEvent})(EventForm);
