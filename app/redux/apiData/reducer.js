@@ -6,7 +6,8 @@ import {
 
 const fakeDay = {
   events: [
-    { text: 'text', description: 'description' }
+    { text: 'Task1 ', description: 'description' },
+    { text: 'Task 2', description: 'description' }
   ]
 }
 

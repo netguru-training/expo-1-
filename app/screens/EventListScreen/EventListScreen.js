@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, Text} from 'react-native'
 import { connect } from 'react-redux'
 
 import {
@@ -44,6 +44,7 @@ class EventListScreen extends React.Component {
 
     return (
       <View>
+        <Text > {`from weather data`} </Text>
         <ScrollView>
           {
             this.buildList(this.props.data)

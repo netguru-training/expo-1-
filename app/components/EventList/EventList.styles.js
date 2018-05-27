@@ -3,9 +3,19 @@ const styles = {
       flex: 1,
       paddingHorizontal: 6
     },
-    currentWeatherContainerStyle: {
+    eventTopPart:{
+      flexDirection: 'row'
+    },
+    eventTopLeftPart:{
       flex: 0.5
+    },
+    eventTopRightPart:{
+      flex: 1
+    },
+    eventDescriptor:{
+
     }
+
   }
   
   export default styles
