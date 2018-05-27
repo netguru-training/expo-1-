@@ -78,11 +78,14 @@ render() {
 }
 
 const mapStateToProps = (state) => {
+
+    console.log(`ac test events in homescrren`)
+    console.log(state.events.events)
     return {
         loading: state.apiData.loading,
         data: state.apiData.data,
         error: state.apiData.error,
-        events: state.events.events,
+        events: state.events.events|| [],
     };
 };
 

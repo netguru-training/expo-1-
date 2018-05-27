@@ -1,7 +1,7 @@
 const styles = {
     containerStyle: {
       flex: 1,
-      height: 20,
+      // height: 20,
       paddingHorizontal: 6
     },
     eventTopPart:{
@@ -13,7 +13,9 @@ const styles = {
       flex: 0.5
     },
     eventTopRightPart:{
-      flex: 1
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center'
     },
     eventDescriptor:{
 
@@ -21,6 +23,9 @@ const styles = {
     eventName: {
         fontSize: 30,
         fontWeight: 'bold'
+    },
+    removeStyle:{
+      color:'red'
     }
 
   }
