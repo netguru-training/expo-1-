@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { CurrentWeatherInfo, WeatherEventListElement, Header } from '../../components';
 import { getWeather } from '../../redux/apiData/actions';
 import styles from './HomeScreen.styles';
 
-const { containerStyle, currentWeatherContainerStyle } = styles;
+const { containerStyle, currentWeatherContainerStyle, loaderStyle } = styles;
 
 class HomeScreen extends React.Component {
     componentDidMount() {
@@ -22,9 +22,10 @@ class HomeScreen extends React.Component {
 
         for (let i = 1; i<7; i++) {
             const element = <WeatherEventListElement
-                headerInfo={days[i].datetime}
+                key={days[i].datetime}
+                headerInfo={`${days[i].datetime}`}
                 imageUrl={`https://www.weatherbit.io/static/img/icons/${days[i].weather.icon}.png`}
-                footerInfo={days[i].temp}
+                footerInfo={`${days[i].temp}`}
                 navigation={this.props.navigation}
                 id={this.prepareId(days[i].datetime)}
             />;
@@ -38,7 +39,12 @@ class HomeScreen extends React.Component {
         const { navigation, data: { weatherData }, loading, error } = this.props;
         if(loading || !weatherData) {
 
-            return (<View><Text>Loading</Text></View>);
+            return (
+                <View style={loaderStyle}>
+                    <ActivityIndicator size="large" color="#0000ff" />
+                    <Text>Getting your weather ;)</Text>
+                </View>
+            );
         }
 
         const { city_name, data } = weatherData.data;
