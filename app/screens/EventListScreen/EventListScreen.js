@@ -35,20 +35,30 @@ class EventListScreen extends React.Component {
       console.log(`remove ${i}`)
     }
 
+    if(!data.length)
+      return (<Text style={styles.noDataYetStyle}>You haven't event yet</Text>)
+
     return data.map((val, index) =>
-      <EventList key={index} text={val.text} description={val.description} />)
+      <EventList key={index} name={val.name} description={val.description} />)
 
     // return arr;
   }
 
   render() {
-
+    
     return (
       <View style={containerStyle}>
-        <CurrentWeatherInfo
-          headerInfo="Monday"
-          imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
-          footerInfo="25 *C"
+        <CurrentWeatherInfo   
+          // imageUrl: PropTypes.string.isRequired,
+          // rowDirection: PropTypes.bool,
+          // headerInfo: PropTypes.string,
+          // footerInfo: PropTypes.string
+
+
+          headerInfo={this.props.weather.datetime}
+          imageUrl={`https://www.weatherbit.io/static/img/icons/${this.props.weather.weather.icon}.png`}
+          footerInfo={this.props.weather.temp.toString()}
+          // rowDirection
         />
         <ScrollView>
           {
@@ -72,10 +82,31 @@ class EventListScreen extends React.Component {
 
 function mapStateToProps(state, ownProps) {
 
+console.log(`mapStateToProps ac`)
+  console.log(state)
+  const tempId = ownProps.navigation.getParam('id',0);
+
+  console.log(`id ${tempId}`);
+  const events = state.events.events.filter((element)=>(
+     element.date == tempId
+  ))
+
+  console.log(`ac state.events.events`)
+  console.log(state.events.events)
+
+  console.log(`ac events`)
+  console.log(events)
+
+  const weather = state.apiData.data.weatherData.data.data.find(d=>{
+    return d.datetime == tempId
+  });
+  console.log(weather)
+
+
   return {
     // data: state.apiData.days[ownProps.navigation.state.params.id].events
-    events: state.apiData.days[ownProps.navigation.state.params.id] && state.apiData.days[ownProps.navigation.state.params.id].events || [],
-
+    events,//state.eventss[ownProps.navigation.state.params.id] && state.apiData.days[ownProps.navigation.state.params.id].events || [],
+    weather
   }
 }
 

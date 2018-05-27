@@ -20,7 +20,7 @@ class EventList extends React.Component {
     }
   }
   render() {
-    const { text, description, removeCb } = this.props
+    const { name, description, removeCb } = this.props
     return (
       <View
         style={containerStyle}
@@ -28,7 +28,7 @@ class EventList extends React.Component {
         <View style={eventTopPart}>
           <TouchableOpacity style={eventTopLeftPart} onPress={() => this.setState({ eventDescriptorVisable: !this.state.eventDescriptorVisable })}>
             <Text >
-              {text}
+              {name}
             </Text>
           </TouchableOpacity>
 

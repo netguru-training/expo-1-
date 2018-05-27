@@ -6,7 +6,11 @@ const styles = {
     },
     currentWeatherContainerStyle: {
       flex: 0.5
+    },
+    noDataYetStyle:{
+      textAlign: 'center'
     }
+
   }
   
   export default styles
