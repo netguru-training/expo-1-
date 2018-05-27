@@ -37,14 +37,21 @@ class EventForm extends React.Component {
        }
 
        this.props.addEvent(eventsData);
-       this.setState({name: '', time: '', description: ''})
+       console.log('state', this.state)
+       // this.setState({name: '', time: '', description: ''})
+        this.setState({
+            name: "",
+            time: "",
+            description: "",
+            date: ""
+        }, () => console.log('clear state', this.state));
     }
 
     render() {
         return (
             <View>
                 <Text>Name</Text>
-                <TextInput onChangeText={(name) => this.setState({name: name})}/>
+                <TextInput value={this.state.name} onChangeText={(name) => this.setState({name: name})}/>
                 <View style={{ width: 300 }}>
                     <TouchableOpacity onPress={this._showDateTimePicker}>
                         <Text>Show DatePicker</Text>
@@ -57,7 +64,7 @@ class EventForm extends React.Component {
                     />
                 </View>
                 <Text>Description</Text>
-                <TextInput onChangeText={(description) => this.setState({description: description})}/>
+                <TextInput value={this.state.description} onChangeText={(description) => this.setState({description: description})}/>
                 <Button title="Save" onPress={this.saveEventsData}/>
             </View>
         )
