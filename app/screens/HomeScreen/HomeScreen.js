@@ -35,7 +35,7 @@ class HomeScreen extends React.Component {
             />;
             dayList.push(element);
         }
-             
+
         return dayList;
     }
 
@@ -65,7 +65,6 @@ render() {
                         imageUrl={`https://www.weatherbit.io/static/img/icons/${data[0].weather.icon}.png`}
                         footerInfo={`${data[0].temp}`}
                         isRaining={data[0].pop > 50}
-
                     />
                 </View>
                 <View style={containerStyle}>

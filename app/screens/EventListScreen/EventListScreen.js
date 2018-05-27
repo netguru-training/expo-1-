@@ -2,6 +2,7 @@ import React from 'react'
 import { View, ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import {removeEvent} from '../../redux/events/actions';
 import {
   CurrentWeatherInfo,
@@ -49,18 +50,21 @@ class EventListScreen extends React.Component {
 
     return (
       <View style={containerStyle}>
-        <CurrentWeatherInfo
-          // imageUrl: PropTypes.string.isRequired,
-          // rowDirection: PropTypes.bool,
-          // headerInfo: PropTypes.string,
-          // footerInfo: PropTypes.string
+        <View style={currentWeatherContainerStyle}>
+          <CurrentWeatherInfo
+            // imageUrl: PropTypes.string.isRequired,
+            // rowDirection: PropTypes.bool,
+            // headerInfo: PropTypes.string,
+            // footerInfo: PropTypes.string
 
 
-          headerInfo={this.props.weather.datetime}
-          imageUrl={`https://www.weatherbit.io/static/img/icons/${this.props.weather.weather.icon}.png`}
-          footerInfo={this.props.weather.temp.toString()}
-          // rowDirection
-        />
+            headerInfo={moment(new Date(this.props.weather.datetime)).format('dddd')}
+            imageUrl={`https://www.weatherbit.io/static/img/icons/${this.props.weather.weather.icon}.png`}
+            footerInfo={this.props.weather.temp.toString()}
+            isRaining={this.props.weather.pop > 50}
+            // rowDirection
+          />
+        </View>
         <ScrollView  style={containerStyle}>
           {
             this.buildList(this.props.events)
