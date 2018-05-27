@@ -4,6 +4,7 @@ const styles = {
     borderColor: '#d6d7da',
     fontSize: 30,
     fontWeight: 'bold',
+    flex: 1,
   },
   containerRow: {
     flexDirection: 'row',
@@ -11,8 +12,8 @@ const styles = {
   imageStyle: {
     flex: 1,
     resizeMode: 'contain',
-    width: 100,
-    height: 100
+    width: 70,
+    height: 70
   },
   imageStyleSmall: {
     width: 35,
