@@ -13,6 +13,10 @@ class HomeScreen extends React.Component {
       getWeather();
     }
 
+    prepareId(id){
+        return id.toString();
+    }
+
     renderDayItem(days) {
         let dayList = [];
 
@@ -22,6 +26,7 @@ class HomeScreen extends React.Component {
                 imageUrl={`https://www.weatherbit.io/static/img/icons/${days[i].weather.icon}.png`}
                 footerInfo={days[i].temp}
                 navigation={this.props.navigation}
+                id={this.prepareId(days[i].datetime)}
             />;
             dayList.push(element);
         }

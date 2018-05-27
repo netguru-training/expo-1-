@@ -29,7 +29,7 @@ const WeatherEventListElement = ({
     <View style={containerStyle}>
       <TouchableOpacity
         style={currentWeatherEventContainerStyle}
-        onPress={() => navigation.navigate('EventList', {id:0})}
+        onPress={() => navigation.navigate('EventList', {id})}
       >
         <CurrentWeatherInfo
           headerInfo={headerInfo}
@@ -41,7 +41,7 @@ const WeatherEventListElement = ({
       </TouchableOpacity>
       <TouchableOpacity
         style={addEventContainerStyle}
-        onPress={() => navigation.navigate('EventForm')}
+        onPress={() => navigation.navigate('EventForm', {id})}
       >
         <Text style={plusStyle}>+</Text>
       </TouchableOpacity>
