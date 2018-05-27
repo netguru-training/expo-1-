@@ -18,7 +18,8 @@ const WeatherEventListElement = ({
   footerInfo,
   eventsNumber,
   navigation,
-  id
+  id,
+  isRaining
 }) => {
   const eventsNumberInfo =
     eventsNumber > 0
@@ -36,6 +37,7 @@ const WeatherEventListElement = ({
           imageUrl={imageUrl}
           footerInfo={footerInfo}
           rowDirection
+          isRaining={isRaining}
         />
         <Text style={currentEventsNumberStyle}>{eventsNumberInfo}</Text>
       </TouchableOpacity>

@@ -30,7 +30,7 @@ const CurrentWeatherInfo = ({
         style={[imageStyle, rowDirection && imageStyleSmall]}
         source={{ uri: imageUrl }}
       />
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
         <Text
           style={[footerInfoStyle, rowDirection && textSmall]}
         >
