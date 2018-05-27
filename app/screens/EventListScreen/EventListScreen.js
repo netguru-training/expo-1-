@@ -2,7 +2,7 @@ import React from 'react'
 import { View, ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-
+import {removeEvent} from '../../redux/events/actions';
 import {
   CurrentWeatherInfo,
   WeatherEventListElement
@@ -32,14 +32,15 @@ class EventListScreen extends React.Component {
 
 
     const remove = (i) => {
-      console.log(`remove ${i}`)
+      console.log(`in remove ${i}`);
+      this.props.removeEvent(i);
     }
 
     if(!data.length)
       return (<Text style={styles.noDataYetStyle}>You haven't event yet</Text>)
 
     return data.map((val, index) =>
-      <EventList key={index} name={val.name} description={val.description} />)
+      <EventList style={styles.containerStyle} key={index} name={val.name} description={val.description} removeCb={remove} dateToRemove={val.date}/>)
 
     // return arr;
   }
@@ -60,7 +61,7 @@ class EventListScreen extends React.Component {
           footerInfo={this.props.weather.temp.toString()}
           // rowDirection
         />
-        <ScrollView>
+        <ScrollView  style={containerStyle}>
           {
             this.buildList(this.props.events)
           }
@@ -83,19 +84,13 @@ class EventListScreen extends React.Component {
 function mapStateToProps(state, ownProps) {
 
 console.log(`mapStateToProps ac`)
-  console.log(state)
   const tempId = ownProps.navigation.getParam('id',0);
 
-  console.log(`id ${tempId}`);
   const events = state.events.events.filter((element)=>(
      element.date == tempId
   ))
 
-  console.log(`ac state.events.events`)
-  console.log(state.events.events)
-
-  console.log(`ac events`)
-  console.log(events)
+  console.log(`events: `, events)
 
   const weather = state.apiData.data.weatherData.data.data.find(d=>{
     return d.datetime == tempId
@@ -110,4 +105,4 @@ console.log(`mapStateToProps ac`)
   }
 }
 
-export default connect(mapStateToProps)(EventListScreen)
+export default connect(mapStateToProps,{removeEvent})(EventListScreen)

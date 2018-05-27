@@ -21,7 +21,8 @@ class EventList extends React.Component {
     }
   }
   render() {
-    const { name, description, removeCb } = this.props
+    const { name, description, removeCb, dateToRemove } = this.props
+
     return (
       <View
         style={containerStyle}
@@ -29,12 +30,16 @@ class EventList extends React.Component {
         <View style={eventTopPart}>
           <TouchableOpacity style={eventTopLeftPart} onPress={() => this.setState({ eventDescriptorVisable: !this.state.eventDescriptorVisable })}>
             <Text style={eventName}>
-              - {name}
+               {name}
             </Text>
           </TouchableOpacity>
 
           <View style={eventTopRightPart}>
-            <Text> {`Remove`} </Text>
+            <TouchableOpacity onPress={() => {
+              removeCb(name+dateToRemove)
+              }}>
+              <Text style={styles.removeStyle}> {`Remove`} </Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -43,15 +48,6 @@ class EventList extends React.Component {
             <Text> {description} </Text>
           </View>
         }
-
-
-        <TouchableOpacity onPress={removeCb}>
-
-          {/* <Image
-          style={styles.button}
-          source={require('./myButton.png')}
-        /> */}
-        </TouchableOpacity>
       </View>
     )
   }
