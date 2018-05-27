@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { View, Text, Image } from 'react-native'
+import { RainSymbol } from '../../components';
 import styles from './CurrentWeatherInfo.styles'
 
 const {
@@ -14,7 +15,7 @@ const {
 } = styles
 
 const CurrentWeatherInfo = ({
-  imageUrl, headerInfo, footerInfo, rowDirection
+  imageUrl, headerInfo, footerInfo, rowDirection, isRaining
 }) => {
   return (
     <View
@@ -29,11 +30,14 @@ const CurrentWeatherInfo = ({
         style={[imageStyle, rowDirection && imageStyleSmall]}
         source={{ uri: imageUrl }}
       />
-      <Text
-        style={[footerInfoStyle, rowDirection && textSmall]}
-      >
-        {footerInfo} &#8451;
-      </Text>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Text
+          style={[footerInfoStyle, rowDirection && textSmall]}
+        >
+          {footerInfo} &#8451;
+        </Text>
+          {isRaining && <RainSymbol/>}
+      </View>
     </View>
   )
 }
