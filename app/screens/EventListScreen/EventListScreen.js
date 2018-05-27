@@ -45,10 +45,15 @@ class EventListScreen extends React.Component {
 
     return (
       <View style={containerStyle}>
-        <CurrentWeatherInfo
-          headerInfo="Monday"
-          imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
-          footerInfo="25 *C"
+        <CurrentWeatherInfo   // imageUrl, headerInfo, footerInfo, rowDirection
+
+          // headerInfo="Monday"
+          // imageUrl="https://www.freeiconspng.com/uploads/weather-icon-png-16.png"
+          // footerInfo="25 *C"
+          headerInfo={this.props.weather.datetime}
+          imageUrl={`https://www.weatherbit.io/static/img/icons/${this.props.weather.weather.icon}.png`}
+          footerInfo={this.props.weather.temp}
+          // navigation={this.props.navigation}
         />
         <ScrollView>
           {
@@ -72,10 +77,23 @@ class EventListScreen extends React.Component {
 
 function mapStateToProps(state, ownProps) {
 
+  const tempId = ownProps.navigation.getParam('id',0);
+
+  console.log(`id ${tempId}`);
+  const events = state.events.events.filter((element)=>{
+    return element.date == tempId;
+  })
+
+  const weather = state.apiData.data.weatherData.data.data.find(d=>{
+    return d.datetime == tempId
+  });
+  console.log(weather)
+
+
   return {
     // data: state.apiData.days[ownProps.navigation.state.params.id].events
-    events: state.apiData.days[ownProps.navigation.state.params.id] && state.apiData.days[ownProps.navigation.state.params.id].events || [],
-
+    events,//state.eventss[ownProps.navigation.state.params.id] && state.apiData.days[ownProps.navigation.state.params.id].events || [],
+    weather
   }
 }
 
