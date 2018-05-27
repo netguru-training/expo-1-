@@ -1,8 +1,11 @@
 const styles = {
     containerStyle: {
       flex: 1,
-      // height: 20,
-      paddingHorizontal: 6
+      paddingHorizontal: 6,
+      borderTopWidth: 1,
+      borderRadius: 4,
+      borderWidth: 0.5,
+      borderColor: '#d6d7da',
     },
     eventTopPart:{
       height: 65,
@@ -10,22 +13,23 @@ const styles = {
       alignItems: 'center'
     },
     eventTopLeftPart:{
-      flex: 0.5
+      flex: 4
     },
     eventTopRightPart:{
       flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center'
+      justifyContent: 'flex-end'
     },
     eventDescriptor:{
+        fontSize: 15,
+        paddingBottom: 10,
 
     },
     eventName: {
         fontSize: 30,
         fontWeight: 'bold'
     },
-    removeStyle:{
-      color:'red'
+    removeStyle: {
+        color: 'red',
     }
 
   }

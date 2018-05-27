@@ -9,7 +9,8 @@ const {
   eventTopLeftPart,
   eventTopRightPart,
   eventDescriptor,
-  eventName
+  eventName,
+  removeStyle
 } = styles
 
 
@@ -45,7 +46,7 @@ class EventList extends React.Component {
 
         {this.state.eventDescriptorVisable &&
           <View >
-            <Text> {description} </Text>
+            <Text style={eventDescriptor}> {description} </Text>
           </View>
         }
       </View>
