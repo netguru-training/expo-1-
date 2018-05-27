@@ -21,7 +21,8 @@ Header.propTypes = {
 
 const styles = StyleSheet.create({
   view: {
-    width: '100%'
+    marginTop: 10,
+    width: '100%',
   },
   text: {
     fontSize: 30,
