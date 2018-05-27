@@ -31,6 +31,7 @@ class HomeScreen extends React.Component {
                 footerInfo={`${days[i].temp}`}
                 navigation={this.props.navigation}
                 id={this.prepareId(days[i].datetime)}
+                isRaining={days[i].pop > 50}
             />;
             dayList.push(element);
         }
@@ -62,6 +63,7 @@ class HomeScreen extends React.Component {
                             headerInfo={moment(new Date(data[0].datetime)).format('dddd')}
                             imageUrl={`https://www.weatherbit.io/static/img/icons/${data[0].weather.icon}.png`}
                             footerInfo={`${data[0].temp}`}
+                            isRaining={data[0].pop > 50}
                         />
                     </View>
                     <View style={containerStyle}>
