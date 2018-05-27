@@ -18,7 +18,8 @@ class EventForm extends React.Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        this.setState({time: date})
+        const dateFormatted = date.toLocaleDateString();
+        this.setState({time: dateFormatted})
         this._hideDateTimePicker();
     };
 

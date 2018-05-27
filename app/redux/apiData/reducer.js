@@ -30,6 +30,7 @@ function apiData(state = initialState, action) {
         error: {}
       };
     case GET_WEATHER_SUCCESS:
+        console.log('weather', state)
       return {
         ...state,
         data: action.payload,
