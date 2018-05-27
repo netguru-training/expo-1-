@@ -28,6 +28,7 @@ const styles = {
     marginBottom: 0
   },
   footerInfoStyle: {
+    padding: 3,
     borderRadius: 4,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
