@@ -18,9 +18,10 @@ class HomeScreen extends React.Component {
 
         for (let i = 1; i<7; i++) {
             const element = <WeatherEventListElement
-                headerInfo={days[i].datetime}
+                key={days[i].datetime}
+                headerInfo={`${days[i].datetime}`}
                 imageUrl={`https://www.weatherbit.io/static/img/icons/${days[i].weather.icon}.png`}
-                footerInfo={days[i].temp}
+                footerInfo={`${days[i].temp}`}
                 navigation={this.props.navigation}
             />;
             dayList.push(element);
