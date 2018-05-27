@@ -69,7 +69,6 @@ class EventListScreen extends React.Component {
           {
             this.buildList(this.props.events)
           }
-          <EventList name='task' description='opis' />
         </ScrollView>
 
       </View>
