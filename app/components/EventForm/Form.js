@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, Button} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {connect} from 'react-redux';
 import {addEvent} from '../../redux/events/actions';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -53,9 +54,10 @@ class EventForm extends React.Component {
                 <TextInput style={styles.input} value={this.state.name} onChangeText={(name) => this.setState({name: name})} underlineColorAndroid='transparent' />
                 <View style={{ width: 300, marginBottom: 25 }}>
                     <TouchableOpacity onPress={this._showDateTimePicker}>
-                        <Text >Show DatePicker</Text>
+                        <Text>What time is your event?</Text>
+                        <Ionicons name="md-clock" size={32} color="lightblue" />
                     </TouchableOpacity>
-                    <DateTimePicker
+                        <DateTimePicker
                         isVisible={this.state.isDateTimePickerVisible}
                         onConfirm={this._handleDatePicked}
                         onCancel={this._hideDateTimePicker}
@@ -64,7 +66,7 @@ class EventForm extends React.Component {
                 </View>
                 <Text style={styles.text}>Description</Text>
                 <TextInput style={styles.input} value={this.state.description} onChangeText={(description) => this.setState({description: description})} underlineColorAndroid='transparent' />
-                <View><Button title="Save" onPress={this.saveEventsData} /></View>
+                <View><Button title="Save" onPress={this.saveEventsData} disabled = {this.state.name === ''}/></View>
             </View>
         )
     }
