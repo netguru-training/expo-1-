@@ -31,7 +31,7 @@ class HomeScreen extends React.Component {
                 footerInfo={`${days[i].temp}`}
                 navigation={this.props.navigation}
                 id={this.prepareId(days[i].datetime)}
-                isRaining={days[i].pop > 50}
+                isRaining={days[i].pop >= 50}
             />;
             dayList.push(element);
         }
