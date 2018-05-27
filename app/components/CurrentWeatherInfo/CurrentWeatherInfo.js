@@ -32,7 +32,7 @@ const CurrentWeatherInfo = ({
       <Text
         style={[footerInfoStyle, rowDirection && textSmall]}
       >
-        {footerInfo}
+        {footerInfo} &#8451;
       </Text>
     </View>
   )
