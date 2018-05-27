@@ -9,7 +9,8 @@ const {
   eventTopLeftPart,
   eventTopRightPart,
   eventDescriptor,
-  eventName
+  eventName,
+  removeStyle
 } = styles
 
 
@@ -29,18 +30,18 @@ class EventList extends React.Component {
         <View style={eventTopPart}>
           <TouchableOpacity style={eventTopLeftPart} onPress={() => this.setState({ eventDescriptorVisable: !this.state.eventDescriptorVisable })}>
             <Text style={eventName}>
-              - {name}
+              {name}
             </Text>
           </TouchableOpacity>
 
           <View style={eventTopRightPart}>
-            <Text> {`Remove`} </Text>
+            <Text style={removeStyle}> {`Remove`} </Text>
           </View>
         </View>
 
         {this.state.eventDescriptorVisable &&
           <View >
-            <Text> {description} </Text>
+            <Text style={eventDescriptor}> {description} </Text>
           </View>
         }
 

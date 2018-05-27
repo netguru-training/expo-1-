@@ -45,10 +45,10 @@ class EventListScreen extends React.Component {
   }
 
   render() {
-    
+
     return (
       <View style={containerStyle}>
-        <CurrentWeatherInfo   
+        <CurrentWeatherInfo
           // imageUrl: PropTypes.string.isRequired,
           // rowDirection: PropTypes.bool,
           // headerInfo: PropTypes.string,
@@ -64,6 +64,7 @@ class EventListScreen extends React.Component {
           {
             this.buildList(this.props.events)
           }
+          <EventList name='task' description='opis' />
         </ScrollView>
 
       </View>
