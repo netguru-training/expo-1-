@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { CurrentWeatherInfo, WeatherEventListElement, Header } from '../../components';
 import { getWeather } from '../../redux/apiData/actions';
 import styles from './HomeScreen.styles';
@@ -21,9 +22,11 @@ class HomeScreen extends React.Component {
         let dayList = [];
 
         for (let i = 1; i<7; i++) {
+            const weekday = moment(new Date(days[i].datetime)).format('dddd');
+
             const element = <WeatherEventListElement
                 key={days[i].datetime}
-                headerInfo={`${days[i].datetime}`}
+                headerInfo={`${weekday}`}
                 imageUrl={`https://www.weatherbit.io/static/img/icons/${days[i].weather.icon}.png`}
                 footerInfo={`${days[i].temp}`}
                 navigation={this.props.navigation}
@@ -56,7 +59,7 @@ class HomeScreen extends React.Component {
                 <Header text={city_name}/>
                     <View style={currentWeatherContainerStyle}>
                         <CurrentWeatherInfo
-                            headerInfo="Monday"
+                            headerInfo={moment(new Date(data[0].datetime)).format('dddd')}
                             imageUrl={`https://www.weatherbit.io/static/img/icons/${data[0].weather.icon}.png`}
                             footerInfo={`${data[0].temp}`}
                         />
