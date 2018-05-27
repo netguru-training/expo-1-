@@ -85,7 +85,8 @@ const styles = {
         marginBottom: 20,
         borderWidth: 2,
         borderColor: 'lightblue',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        paddingVertical: 10
     },
     text: {
         fontSize: 20,
