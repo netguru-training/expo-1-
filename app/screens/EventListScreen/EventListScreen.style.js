@@ -5,13 +5,13 @@ const styles = {
       backgroundColor: '#F0F8FF',
     },
     currentWeatherContainerStyle: {
-      flex: 0.5
+      paddingTop: 10,
+      flex: 0.4
     },
     noDataYetStyle:{
       textAlign: 'center'
     }
 
   }
-  
+
   export default styles
-  
